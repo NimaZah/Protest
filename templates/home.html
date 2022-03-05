@@ -1,0 +1,25 @@
+<html>
+    <body bgcolor=#d4a3ae>
+
+        <center>
+
+        <h1> Protest </h1>
+
+        <form>
+
+            <form method="post" action="{{ url_for('prediction') }}">
+
+            <b> First value : </b> <input type = "text" name = "country"> <br>
+
+            <b> Second value : </b> <input type = "text" name = "year"> <br>
+
+            <b> Third value : </b> <input type = "text" name = "region"> <br>
+
+            <b> Fourth value : </b> <input type = "text" name = "part"> <br> 
+
+            <input type = "submit" value = "predict">
+
+        </form>
+        </center>
+    </body>
+</html>
