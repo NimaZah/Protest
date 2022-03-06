@@ -1,25 +1,35 @@
-<html>
-    <body bgcolor=#d4a3ae>
+# Step2: creating the content of home.html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Refresh" content="3; URL=http://localhost:5000/">
 
-        <center>
+  <title>Home</title>
+</head>
+<body>
 
-        <h1> Protest </h1>
+<h1>Home</h1>
 
-        <form>
+<br>
 
-            <form method="post" action="{{ url_for('prediction') }}">
+<form action="/predict" method="post">
+  Country:
+  <input type="text" name="country" value="india">
+  <br>
+  Year:
+  <input type="text" name="year" value="2019">
+  <br>
+  Region:
+  <input type="text" name="region" value="Africa">
+  <br>
+  Number of participants:
+  <input type="text" name="participants" value="">
+  <br>
+  <br>
+  <input type="submit" value="Submit">
+</form>
 
-            <b> First value : </b> <input type = "text" name = "country"> <br>
-
-            <b> Second value : </b> <input type = "text" name = "year"> <br>
-
-            <b> Third value : </b> <input type = "text" name = "region"> <br>
-
-            <b> Fourth value : </b> <input type = "text" name = "part"> <br> 
-
-            <input type = "submit" value = "predict">
-
-        </form>
-        </center>
-    </body>
+</body>
 </html>

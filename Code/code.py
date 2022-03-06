@@ -127,6 +127,3 @@ with open(file_path, 'wb') as f:
 # download the model from google colab to the local machine.
 from google.colab import files
 files.download('trained_model.pkl')
-
-# Define a test set to run predictions on
-test_df = pd.read_csv('https://raw.githubusercontent.com/joankovacs/mass_mobilization/main/test_
