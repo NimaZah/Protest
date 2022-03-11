@@ -1,3 +1,4 @@
+# create the show-prediction.html page
 <!DOCTYPE html> 
 <head> 
 	<title> 
@@ -10,22 +11,11 @@
 <!-- display the prediction  -->
 <div class="home">
 	<h1 style="color: green"> 
-		Here is the prediction:
-	</h1> 
-	<h1 style="color: green"> 
-		{{ prediction.prediction_key }}
+		Here is the prediction: 
 	</h1>
-
-	
-<!-- link back to home.html for entering scoring parameters for another prediction  -->
-	<form action="{{ url_for('home') }}">
-		<input type="submit" value="Get another prediction" style="font-size : 20px; width: 40%; height: 30px;"/>
-	</form>
-	
+	<p style="color: green">
+		{{ prediction['prediction_key'] }}
+	</p>
+	{{ render_template('results.html') }}
 </div>
-</body> 
-
-
-
-
-</html>	
+</body>

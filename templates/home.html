@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!-- <!DOCTYPE html> 
 <head> 
 	<title> 
 		Predict the length of the protest
@@ -109,4 +109,38 @@ function link_with_args(){
 		}
 	}
 	}
-	</script>
+	</script> -->
+
+	# create the home.html page to enter model scoring parameters
+	<!DOCTYPE html> 
+	<head> 
+		<title> 
+			Predicting whether protests last a long time or not.
+		</title>
+	</head> 
+	<body>
+		<h2>Enter parameters for the model: </h2>
+		<form action="/show-prediction">
+			<ol>
+				<li>
+					<label for="country">Country</label>
+					<input type="text" id="country" name="country">
+				</li>
+				<li>
+					<label for="year">Year</label>
+					<input type="text" id="year" name="year">
+				</li>
+				<li>
+					<label for="region">Region</label>
+					<input type="text" id="region" name="region">
+				</li>
+				<li>
+					<label for="participants">Participants</label>
+					<input type="text" id="participants" name="participants">
+				</li>
+				<li>
+					<input type="submit" value="Submit">
+				</li>
+			</ol>
+		</form>
+	</body>	
