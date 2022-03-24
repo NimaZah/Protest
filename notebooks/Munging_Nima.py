@@ -227,7 +227,72 @@ for col in ['accomodation', 'arrests', 'beatings', 'crowd_dispersal', 'ignore', 
 unique = df.nunique()
 unique
 
-df.info()
+print(df.info())
+print(df.describe())
 
-# create a chart 'protest_type_count_per_country_per_year' that shows the values of the number of protests per country per year.
-protest_type_count_per_country_per_year = df.groupby
+# Group the dataframe by protest length and then count the number of times each length appears.
+new_df = df.groupby(['protest_length']).size().reset_index(name='counts')
+new_df
+
+# Group the dataframe by the number of protests per country.
+num_protests = df.groupby(['country']).size().reset_index(name='counts')
+num_protests
+
+# What is the average number of participants in a protest?
+avg_participants = df.groupby(['country'])['participants'].mean()
+for i in avg_participants.index:
+    print(i, avg_participants[i])
+
+# sort the values of avg_participants in descending order and show 10 countries with the highest average number of participants.
+highest_nums = avg_participants.sort_values(ascending=False)
+top_10 = highest_nums.head(10)
+plt.figure(figsize=(10, 10))
+top_10.plot(kind='barh', color='red')
+plt.title('Average number of participants per protest')
+plt.xlabel('Average number of participants')
+plt.ylabel('Countries')
+plt.show()
+
+# How the demands of protesters have changed over time.
+df_new = df.groupby(['year'])['labor_wage_dispute', 'land_farm_issue', 'police_brutality',
+                              'political_behavior_or_process', 'price_hike_or_tax_policy', 'removal_of_politician', 'social_restrictions'].sum()
+df_new
+
+plt.figure(figsize=(20, 10))
+
+sns.set(style="darkgrid")
+
+ax = sns.lineplot(data=df_new)
+
+# Add title and labels to the plot.
+plt.title('Demand of protests over time')
+plt.xlabel('Year')
+plt.ylabel('Number of protests')
+
+plt.show()
+
+# How the protest participation has changed over time.
+nums_protest = df.groupby(
+    ['year'])['protest'].count().reset_index(name='counts')
+plt.figure(figsize=(20, 10))
+
+sns.set(style="darkgrid")
+ax = sns.lineplot(data=nums_protest, x='year', y='counts')
+
+
+# How the response of state to protests is changing over time?
+df_state = df.groupby(['year'])['accomodation', 'arrests', 'beatings',
+                                'crowd_dispersal', 'ignore', 'killings', 'shootings'].sum()
+df_state
+plt.figure(figsize=(20, 10))
+plt.title('Response of state to protests over time')
+sns.set(style="darkgrid")
+
+ax = sns.lineplot(data=df_state)
+
+# Does the number of protests per year change over time?
+nums_protest = df.groupby(
+    ['year'])['protest'].count().reset_index(name='counts')
+nums_protest
+plt.figure(figsize=(20, 10))
+ax = sns.lineplot(data=nums_protest, x='year', y='counts')
